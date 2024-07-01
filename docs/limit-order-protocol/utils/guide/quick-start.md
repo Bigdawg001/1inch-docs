@@ -15,7 +15,7 @@ yarn add @1inch/limit-order-protocol-utils
 
 > ***Note***
 >
-> `@1inch/limit-order-protocol` package is now used for smart contract distribution and no linger contains this library.
+> `@1inch/limit-order-protocol` package is now used for smart contract distribution and no longer contains this library.
 
 <br/>
 
@@ -88,13 +88,13 @@ const limitOrderSignature = limitOrderBuilder.buildOrderSignature(
 );
 
 // Create a call data for fill the limit order
-const callData = limitOrderProtocolFacade.fillLimitOrder(
-    limitOrder,
-    limitOrderSignature,
-    '100',
-    '0',
-    '50'
-);
+const callData = limitOrderProtocolFacade.fillLimitOrder({
+    order: limitOrder,
+    signature: limitOrderSignature,
+    makingAmount: '100',
+    takingAmount: '0',
+    thresholdAmount: '50'
+});
 
 // Send transaction for the order filling
 // Must be implemented
